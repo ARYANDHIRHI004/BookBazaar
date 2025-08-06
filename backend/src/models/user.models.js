@@ -26,6 +26,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    role:{
+        type:Enumerator,
+        default:'USER'
+    },
     avatar: {
       type: {
         url: String,
@@ -94,3 +98,5 @@ userSchema.methods.generateRefreshToken = function () {
     }
   );
 };
+
+export const user = mongoose.model('user', userSchema)
