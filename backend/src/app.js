@@ -17,11 +17,11 @@ import ordersRouter from "./routes/orders.routes.js"
 import cartsRouter from "./routes/carts.routes.js"
 import reviewsRouter from "./routes/reviews.routes.js"
 
-app.use('/api/vi/users', userRouter)
-app.use('/api/vi/books', booksRouter)
-app.use('/api/vi/carts', cartsRouter)
-app.use('/api/vi/orders', ordersRouter)
-app.use('/api/vi/reviews', reviewsRouter)
+app.use('/api/v1/users', userRouter)
+app.use('/api/v1/books', booksRouter)
+app.use('/api/v1/carts', cartsRouter)
+app.use('/api/v1/orders', ordersRouter)
+app.use('/api/v1/reviews', reviewsRouter)
 
 
 export default app

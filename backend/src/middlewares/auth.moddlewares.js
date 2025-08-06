@@ -1,8 +1,8 @@
-import { ACCESS_TOKEN_SECRET } from "../constents";
+import { ACCESS_TOKEN_SECRET } from "../constents.js";
 import { User } from "../models/user.models.js";
 import { ApiError } from "../utils/ApiError.js";
 import asyncHandler from "../utils/AsyncHandler.js";
-import jwt from "jsonwebtoke";
+import jwt from "jsonwebtoken"
 
 const verifyJWT = asyncHandler(async (req, _, next) => {
   try {
@@ -19,12 +19,13 @@ const verifyJWT = asyncHandler(async (req, _, next) => {
     next();
   } catch (error) {
     console.log("unauthenticated user", error);
+    next()
   }
 });
 
 const checkAdmin = asyncHandler(async (req, _, next) => {
   try {
-    const userId = req.user._id;
+    const userId = req.user?._id;
     const user = await User.findById(userId);
 
     if (!user) {

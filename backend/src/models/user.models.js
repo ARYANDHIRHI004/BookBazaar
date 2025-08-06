@@ -69,15 +69,15 @@ userSchema.pre("save", async function () {
   }
 });
 
-userSchema.methods.comparePassword = async function () {
-  const isMatched = await bcrypt.compare(this.password, password);
+userSchema.methods.comparePassword = async function (password) {
+  const isMatched = await bcrypt.compare(password, this.password);
   return isMatched;
 };
 
 userSchema.methods.generateAccessToken = function () {
   return jwt.sign(
     {
-      _id: this._if,
+      _id: this._id,
       email: this.email,
       username: this.username,
     },
@@ -91,7 +91,7 @@ userSchema.methods.generateAccessToken = function () {
 userSchema.methods.generateRefreshToken = function () {
   return jwt.sign(
     {
-      _id: this._if,
+      _id: this._id,
     },
     REFRESH_TOKEN_SECRET,
     {
