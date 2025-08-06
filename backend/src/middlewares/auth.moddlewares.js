@@ -38,6 +38,7 @@ const checkAdmin = asyncHandler(async (req, _, next) => {
     next();
   } catch (error) {
     console.log("unauthorized user", error);
+    next()
   }
 });
 
