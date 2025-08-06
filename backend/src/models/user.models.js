@@ -27,7 +27,8 @@ const userSchema = new mongoose.Schema(
       required: true,
     },
     role:{
-        type:Enumerator,
+        type:String,
+        enum:['USER', "ADMIN"],
         default:'USER'
     },
     avatar: {
