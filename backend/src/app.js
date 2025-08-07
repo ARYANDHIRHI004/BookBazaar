@@ -19,7 +19,7 @@ import reviewsRouter from "./routes/reviews.routes.js"
 
 app.use('/api/v1/users', userRouter)
 app.use('/api/v1/books', booksRouter)
-app.use('/api/v1/carts', cartsRouter)
+app.use('/api/v1/cart', cartsRouter)
 app.use('/api/v1/orders', ordersRouter)
 app.use('/api/v1/reviews', reviewsRouter)
 

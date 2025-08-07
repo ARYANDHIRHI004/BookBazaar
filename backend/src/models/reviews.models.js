@@ -5,6 +5,10 @@ const reviewSchema = new mongoose.Schema({
         type:mongoose.Types.ObjectId,
         ref:'user'
     },
+    bookId:{
+        type:mongoose.Types.ObjectId,
+        ref:"book"
+    },
     reviewMessage:{
         type:String,
         required:True

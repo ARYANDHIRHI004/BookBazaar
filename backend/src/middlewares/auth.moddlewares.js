@@ -42,4 +42,23 @@ const checkAdmin = asyncHandler(async (req, _, next) => {
   }
 });
 
-export { verifyJWT, checkAdmin };
+const checkUser = asyncHandler(async (req, _, next) => {
+  try {
+    const userId = req.user?._id;
+    const user = await User.findById(userId);
+
+    if (!user) {
+      throw new ApiError(400, "You are not logged In");
+    }
+
+    if (user?.role !== "USER") {
+      throw new ApiError(402, "You are not authorized");
+    }
+    next();
+  } catch (error) {
+    console.log("unauthorized user", error);
+    next()
+  }
+});
+
+export { verifyJWT, checkAdmin, checkUser };
